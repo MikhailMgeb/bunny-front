@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunny</title>
+</head>
+
+<body>
+    <button class="button"></button>
+
+    <script>
+        const button = document.querySelector('.button');
+        fetch('http://localhost:3000/')
+            .then(response => response.json())
+            .then(data => {
+                button.textContent = `Кол-во кликов ${data.count}`
+            })
+
+        button.addEventListener('click', (event) => {
+            fetch('http://localhost:3000/clicks')
+                .then(response => response.json())
+                .then(data => {
+                    button.textContent = `Кол-во кликов ${data.count}`
+                })
+        })
+    </script>
+</body>
+
+</html>
